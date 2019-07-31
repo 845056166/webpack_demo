@@ -1,9 +1,13 @@
 <template>
-    <div>测试组建2</div>
+    <div>{{title}}</div>
 </template>
 <script>
 export default {
-    
+  data() {
+    return {
+        title: 'list1',
+    }
+  }
 }
 </script>
 <style scoped>

@@ -7,7 +7,8 @@ const nodeExternals = require('webpack-node-externals')
 module.exports = {
   mode: 'development',
   entry: {
-    module1: './src/module/module1/index.js'
+    module1: './src/module/module1/index.js',
+    module2: './src/module/module2/index.js',
   },
   output: {
     // output里面的path表示的是output目录对应的一个绝对路径。
@@ -68,8 +69,15 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'webpack_demo',
-      template: './index.html', // 指定的模板
-      filename: 'index.html' // 生成的html文件名
+      template: 'src/module/module1/index.html', // 指定的模板
+      chunks: ["module1"],
+      filename: 'module/module1.html' // 生成的html文件名
+    }),
+    new HtmlWebpackPlugin({
+      title: 'webpack_demo',
+      template: 'src/module/module2/index.html', // 指定的模板
+      chunks: ["module2"],
+      filename: 'module/module2.html' // 生成的html文件名
     }),
     new VueLoaderPlugin(),
     new CopyWebpackPlugin([ // 将static文件夹拷贝到dist中
