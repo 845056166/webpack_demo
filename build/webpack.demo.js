@@ -15,7 +15,6 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
   },
-  devtool: 'inline-cheap-module-source-map',
   module: {
     rules: [
       {
@@ -27,7 +26,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [path.resolve('src'), path.resolve('test')]
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -55,30 +54,20 @@ module.exports = {
   },
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, 'src')
     }
   },
+  devtool: '#eval-source-map',
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'my App',
-      template: './index.html', // 指定的模板
-      filename: 'index.html' // 生成的html文件名
-    }),
     new VueLoaderPlugin(),
-    new CopyWebpackPlugin([ // 将static文件夹拷贝到dist中
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: 'static',
-        ignore: ['.*']
-      }
-    ])
   ],
   devServer: {
-    contentBase: './', //静态文件在哪里找
-    // contentBase: path.join(__dirname, 'dist'),
-    publicPath: '/', // devServer里面的publicPath表示的是打包生成的静态文件所在的位置（若是devServer里面的publicPath没有设置，则会认为是output里面设置的publicPath的值）    
-    compress: true, // 压缩
-    host: "0.0.0.0",
-    port: 9000,
+    historyApiFallback: true,
+    noInfo: true
   },
+  performance: {
+    hints: false
+  },
+  externals: [nodeExternals()]
 }

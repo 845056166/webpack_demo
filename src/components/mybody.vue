@@ -11,21 +11,23 @@
             </ul>
         </div>
         <div class="test">
-
+            <search placeholder="请输入" v-model="text"></search>
         </div>
     </div>
 </template>
 <script>
 import myheader from './header.vue'; 
+import search from './search.vue'; 
 export default {
     name: 'mybody',
     data() {
         return {
-
+            text: '测试'
         };
     },
     components: {
       myheader,
+      search,
     },
 }
 </script>
