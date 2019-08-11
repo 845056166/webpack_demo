@@ -1,23 +1,61 @@
 <template>
     <div>
         <myheader></myheader>
-        <div class="scroller">
-            <ul>
-                <li>
-                    <img src="../assets/images/1.png" alt="">
-                    <img src="../assets/images/2.png" alt="">
-                    <img src="../assets/images/3.png" alt="">
-                </li>
-            </ul>
+        <div class="wrapper">
+            <div class="scroller">
+                <div class="ul">
+                <ul>
+                    <li>
+                        <img src="../assets/images/1.png" alt="">
+                        <img src="../assets/images/2.png" alt="">
+                        <img src="../assets/images/3.png" alt="">
+                    </li>
+                </ul>
+                </div>
+                
+                <ul>
+                    <li>
+                        <img src="../assets/images/1.png" alt="">
+                        <img src="../assets/images/2.png" alt="">
+                        <img src="../assets/images/3.png" alt="">
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../assets/images/1.png" alt="">
+                        <img src="../assets/images/2.png" alt="">
+                        <img src="../assets/images/3.png" alt="">
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../assets/images/1.png" alt="">
+                        <img src="../assets/images/2.png" alt="">
+                        <img src="../assets/images/3.png" alt="">
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../assets/images/1.png" alt="">
+                        <img src="../assets/images/2.png" alt="">
+                        <img src="../assets/images/3.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="test">
+
+            </div> -->
         </div>
-        <div class="test">
-            <search placeholder="请输入" v-model="text"></search>
-        </div>
+        
     </div>
 </template>
 <script>
 import myheader from './header.vue'; 
+<<<<<<< HEAD
 import search from './search.vue'; 
+=======
+import BScroll from 'better-scroll';
+>>>>>>> 710e8e3e2124acfcc640ca644c96ab47f8646580
 export default {
     name: 'mybody',
     data() {
@@ -29,12 +67,25 @@ export default {
       myheader,
       search,
     },
+    mounted() {
+        const wrapper =document.querySelector('.wrapper');
+        let scroll = new BScroll(wrapper,{
+            tap: true,
+            eventPassthrough: 'horizontal'
+        })
+    }
 }
 </script>
 <style lang="scss" scoped>
+.wrapper {
+    height: 300px;
+    overflow: hidden;
+}
+.ul {
+    width: 100%;
+}
     .scroller {
-        width: 100%;
-        overflow: hidden;
+        
         ul {
             width: 100%;
             white-space: nowrap;

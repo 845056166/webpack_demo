@@ -2,7 +2,7 @@ import Vue from 'vue';
 // import Vue from 'vue/dist/vue.esm.js'
 import App from './app.vue';
 import VueRouter from 'vue-router';
-import routes from './config/index';
+import routes from './router.js';
 
 Vue.use(VueRouter);
 const router = new VueRouter({
