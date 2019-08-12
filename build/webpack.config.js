@@ -3,9 +3,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals')
-
+const utils = require('./utils');
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     module1: './src/module/module1/index.js',
     module2: './src/module/module2/index.js',
@@ -14,9 +14,8 @@ module.exports = {
     // output里面的path表示的是output目录对应的一个绝对路径。
     // output里面的publicPath表示的是打包生成的index.html文件里面引用资源的前缀
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name]_[chunkhash:8].js',
-    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+    filename: 'static/js/[name]_[chunkhash:8].js',
+    publicPath: '/' // dev环境下，publicPath为[/] ,pro环境环境下为[./]
   },
   devtool: 'inline-cheap-module-source-map',
   module: {
@@ -48,17 +47,25 @@ module.exports = {
           }
         }
       },
+      // {
+      //   test: /\.(png|jpg|gif|jpeg|svg)$/, // 用了url-loader就不要用file-loader
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 102400
+      //       }
+      //     },
+      //   ]
+      // },
       {
-        test: /\.(png|jpg|gif|jpeg|svg)$/, // 用了url-loader就不要用file-loader
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 3000
-            }
-          },
-        ]
-      }
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          name: 'module/static/img/[name]-[hash:7].[ext]'
+        }
+      },
     ]
   },
   resolve: {
@@ -89,7 +96,7 @@ module.exports = {
     ]),
   ],
   devServer: {
-    contentBase: './module/', //静态文件在哪里找
+    contentBase: './', //静态文件在哪里找
     // contentBase: path.join(__dirname, 'dist'),
     publicPath: '/', // devServer里面的publicPath表示的是打包生成的静态文件所在的位置（若是devServer里面的publicPath没有设置，则会认为是output里面设置的publicPath的值）    
     compress: true, // 压缩
@@ -101,7 +108,7 @@ module.exports = {
     }
   },
 }
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 // test specific setups
 if (process.env.NODE_ENV === 'test') {
   module.exports.externals = [require('webpack-node-externals')()]
