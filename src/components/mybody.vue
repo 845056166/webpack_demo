@@ -51,16 +51,21 @@
 </template>
 <script>
 import myheader from './header.vue'; 
+<<<<<<< HEAD
+import search from './search.vue'; 
+=======
 import BScroll from 'better-scroll';
+>>>>>>> 710e8e3e2124acfcc640ca644c96ab47f8646580
 export default {
     name: 'mybody',
     data() {
         return {
-
+            text: '测试'
         };
     },
     components: {
       myheader,
+      search,
     },
     mounted() {
         const wrapper =document.querySelector('.wrapper');

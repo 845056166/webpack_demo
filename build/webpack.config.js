@@ -2,8 +2,8 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const nodeExternals = require('webpack-node-externals')
-const utils = require('./utils');
+const nodeExternals = require('webpack-node-externals');
+
 module.exports = {
   mode: 'production',
   entry: {
@@ -25,6 +25,11 @@ module.exports = {
         use: [
           'vue-loader'
         ]
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [path.resolve('src'), path.resolve('test')]
       },
       {
         test: /\.css$/,
