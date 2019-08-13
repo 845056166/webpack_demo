@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack --config build/webpack.config.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js",
+    "build": "rm -rf dist && webpack --config build/webpack.config.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.dev.js",
     "test": "mocha-webpack --webpack-config build/webpack.config.js --require test/setup.js test/**/*.spec.js"
   },
   "author": "",
