@@ -1,9 +1,9 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
-const { entrys, plugins } = require('./utils').getEntries();
+// const nodeExternals = require('webpack-node-externals');
+const { entrys, plugins } = require('./utils').getEntriesDev();
 console.log(entrys, plugins, '=========='),
 module.exports = {
   mode: 'development',
@@ -12,7 +12,7 @@ module.exports = {
     // output里面的path表示的是output目录对应的一个绝对路径。
     // output里面的publicPath表示的是打包生成的index.html文件里面引用资源的前缀
     path: path.resolve(__dirname, '../dist'),
-    filename: 'static/js/[name]_[chunkhash:8].js',
+    filename: 'module/js/[name]_[chunkhash:8].js',
     publicPath: '/' // dev环境下，publicPath为[/] ,pro环境环境下为[./]
   },
   devtool: 'inline-cheap-module-source-map',
@@ -50,17 +50,6 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: /\.(png|jpg|gif|jpeg|svg)$/, // 用了url-loader就不要用file-loader
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 102400
-      //       }
-      //     },
-      //   ]
-      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
@@ -85,7 +74,8 @@ module.exports = {
         ignore: ['.*']
       }
     ]),
-  ].concat(plugins),
+    ...plugins,
+  ],
   devServer: {
     contentBase: './', //静态文件在哪里找
     // contentBase: path.join(__dirname, 'dist'),

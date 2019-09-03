@@ -9,7 +9,7 @@ import { log } from 'util';
 export default {
   data() {
     return {
-      title: '测试组建3',
+      title: '测试组建1',
       url: require('../assets/images/1.png'),
     };
   },
