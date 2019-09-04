@@ -7,17 +7,13 @@ const { entrys, plugins } = require('./utils').getEntries();
 
 module.exports = {
   mode: 'production',
-  // entry: {
-  //   module1: './src/module/module1/index.js',
-  //   module2: './src/module/module2/index.js',
-  // },
   entry: entrys,
   output: {
     // output里面的path表示的是output目录对应的一个绝对路径。
     // output里面的publicPath表示的是打包生成的index.html文件里面引用资源的前缀
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]_[chunkhash:8].js',
-    publicPath: './' // dev环境下，publicPath为[/] ,pro环境环境下为[./]
+    publicPath: '../' // dev环境下，publicPath为[/] ,pro环境环境下为[./]
   },
   devtool: 'inline-cheap-module-source-map',
   module: {
@@ -59,7 +55,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10240,
-          name: '[name]-[hash:7].[ext]'
+          name: 'static/[name]-[hash:7].[ext]'
         }
       },
     ]
@@ -70,26 +66,6 @@ module.exports = {
     }
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: 'src/module/module1/index.html', // 指定的模板
-    //   chunks: ["module1"],
-    //   filename: 'module1.html', // 生成的html文件名
-    //   inject: true,
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: true
-    //   }
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: 'src/module/module2/index.html', // 指定的模板
-    //   chunks: ["module2"],
-    //   filename: 'module2.html', // 生成的html文件名
-    //   inject: true,
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: true
-    //   }
-    // }),
     new VueLoaderPlugin(),
     new CopyWebpackPlugin([ // 将static文件夹拷贝到dist中
       {

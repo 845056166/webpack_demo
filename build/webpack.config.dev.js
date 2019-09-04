@@ -3,7 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const nodeExternals = require('webpack-node-externals');
-const { entrys, plugins } = require('./utils').getEntriesDev();
+const { entrys, plugins } = require('./utils').getEntries();
 console.log(entrys, plugins, '=========='),
 module.exports = {
   mode: 'development',

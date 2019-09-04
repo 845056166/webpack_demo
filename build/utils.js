@@ -20,7 +20,7 @@ exports.getEntries = () => {
       new HtmlWebpackPlugin({
         title: 'webpack_demo',
         template: `src/module/${moduleName}/index.html`, // 指定的模板
-        filename: `${moduleName}.html`, // 生成的html文件名
+        filename: `module/${moduleName}.html`, // 生成的html文件名
         hash: false,
         inject: true,
         minify: {
