@@ -6,10 +6,10 @@ const routes = [
     name: 'main',
     component: main,
   },
-  {
-    path: '/list',
-    name: 'list',
-    component: List,
-  },
+  // {
+  //   path: '/list',
+  //   name: 'list',
+  //   component: List,
+  // },
 ];
 export default routes;

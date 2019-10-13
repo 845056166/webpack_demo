@@ -58,11 +58,17 @@ module.exports = {
           name: 'module/static/img/[name]-[hash:7].[ext]'
         }
       },
+      {
+        test: /\.(ttf|eot|svg|woff|woff2)$/,
+        use: 'url-loader'
+      }
     ]
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve('src')
     }
   },
   plugins: [
