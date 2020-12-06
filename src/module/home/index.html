@@ -5,10 +5,17 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>我和颖</title>
       <!-- <link rel="stylesheet" type="text/css" href="./assets/css/lanrenzhijia.css" /> -->
-      <script src="./assets/js/modernizr.custom.63321.js"></script>
+      <!-- <script src="./assets/js/modernizr.custom.63321.js"></script> -->
       <!--[if lte IE 7]><style>.support-note .note-ie{display:block;}</style><![endif]-->
     </head>
     <body>
+      <script>
+        (function() {
+          if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('../service-worker.js', { scope: './' });
+          }
+        })();
+      </script>
       <div id="app"></div>
     </body>
 </html>

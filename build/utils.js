@@ -12,10 +12,10 @@ exports.getEntries = () => {
   const entrys = {};
   const plugins = [];
   const entryFiles = glob.sync(path.join(__dirname, '../src/module/*/index.js'));
-  console.log('================', entryFiles);
   entryFiles.forEach(item => {
     const moduleName = item.match(/module\/(\S*)\/index/)[1];
     entrys[moduleName] = `./src/module/${moduleName}/index.js`
+    // entrys[moduleName] = `./src/module/${moduleName}/index.js`
     plugins.push(
       new HtmlWebpackPlugin({
         title: 'webpack_demo',
@@ -37,6 +37,7 @@ exports.getEntries = () => {
       }),
     )
   });
+  
   return {
     entrys,
     plugins,
@@ -46,7 +47,7 @@ exports.getEntriesDev = () => {
   const entrys = {};
   const plugins = [];
   const entryFiles = glob.sync(path.join(__dirname, '../src/module/*/index.js'));
-  console.log('================', entryFiles);
+  // console.log('================', entryFiles);
   entryFiles.forEach(item => {
     const moduleName = item.match(/module\/(\S*)\/index/)[1];
     entrys[moduleName] = `./src/module/${moduleName}/index.js`

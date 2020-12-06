@@ -1,5 +1,5 @@
 @import url('demo.css');
-/* ´úÂëÕûÀí£ºÀÁÈËÖ®¼Ò www.lanrenzhijia.com */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ www.lanrenzhijia.com */
 @font-face {
  font-family: 'fontawesome-selected';
  src: url("font/fontawesome-selected.eot");
@@ -29,6 +29,7 @@
 	padding-right: 40px;
 }
 .thumb {
+	background-size: contain;
 	position: absolute;
 	width: 100px;
 	height: 100px;
@@ -351,4 +352,4 @@
  max-height: 300px;
 }
 }
-/* ´úÂëÕûÀí£ºÀÁÈËÖ®¼Ò www.lanrenzhijia.com */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ www.lanrenzhijia.com */

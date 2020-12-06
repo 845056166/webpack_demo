@@ -2,14 +2,38 @@
   "name": "webpack_demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "author": "",
   "scripts": {
     "build": "rm -rf dist && webpack --config build/webpack.config.prod.js",
+    "test": "mocha-webpack --webpack-config build/webpack.config.js --require test/setup.js test/**/*.spec.js",
+    "capacitor-copy": "vue-cli-service capacitor-copy",
+    "capacitor-init": "vue-cli-service capacitor-init",
+    "capacitor-open": "vue-cli-service capacitor-open",
+    "capacitor-update": "vue-cli-service capacitor-update",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.dev.js",
-    "test": "mocha-webpack --webpack-config build/webpack.config.js --require test/setup.js test/**/*.spec.js"
+    "shell": "./gitTools/check.sh",
+    "build:dll": "webpack --config build/webpack.dll.js"
   },
-  "author": "",
-  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "./gitTools/check.sh"
+    }
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@capacitor/cli": "^1.0.0-alpha.38",
+    "@capacitor/core": "^1.0.0-alpha.38",
+    "axios": "^0.19.0",
+    "better-scroll": "^1.15.2",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-sslify": "^4.0.3",
+    "superagent": "^5.2.1",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.0",
+    "vue-router": "^3.0.6"
+  },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.5",
@@ -21,26 +45,35 @@
     "css-loader": "^3.0.0",
     "expect": "^24.8.0",
     "file-loader": "^4.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
     "glob": "^7.1.4",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.3.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.0",
     "mocha-webpack": "^1.1.0",
     "node-sass": "^4.12.0",
+    "portfinder": "^1.0.25",
     "sass-loader": "^7.1.0",
+    "shelljs": "^0.8.4",
     "style-loader": "^0.23.1",
+    "sw-precache-webpack-plugin": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^6.0.0",
+    "tslint-config-standard": "^9.0.0",
+    "tslint-loader": "^3.5.4",
+    "typescript": "^3.8.3",
     "url-loader": "^2.0.1",
+    "vue-cli-plugin-pwa": "^1.0.0-alpha.1",
     "vue-loader": "^15.7.1",
+    "vue-resource": "^1.5.1",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.35.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {
-    "better-scroll": "^1.15.2",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.6"
-  }
+  "license": "ISC"
 }
