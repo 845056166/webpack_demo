@@ -53,7 +53,7 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.0",
     "mocha-webpack": "^1.1.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "portfinder": "^1.0.25",
     "sass-loader": "^7.1.0",
     "shelljs": "^0.8.4",
